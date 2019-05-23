@@ -1,6 +1,7 @@
 import React, {useState, createRef} from 'react'
-import {Grid, Segment, Header, Button, Icon, Ref, Sticky, Modal, Image} from 'semantic-ui-react'
+import {Grid, Segment, Header, Button, Icon, Ref, Sticky, Modal, Image, Label, Divider} from 'semantic-ui-react'
 import * as R from 'ramda'
+import './index.css'
 
 //name of the array is pokemon
 import pokemon from './pokemonDatabase.json'
@@ -10,6 +11,9 @@ const getPokemon = desiredPokedexNumber => {
   const isDesiredPokemon = R.propEq("pokedex_number", desiredPokedexNumber)
   return R.find(isDesiredPokemon)(pokemon)
 }
+//To git push, you have to add the files to your local repository (git add .) or (git add _fileName_), 
+//and then commit them (git commit -m "message"). Then PUSH THEM to your github to your desired branch (git push origin _branchName_)
+
 
 
 
@@ -31,7 +35,7 @@ function App() {
   )
   //destructuring objects in the curly braces
   //curly braces defines the object
-  const teamMemberSegment = ({name, pokedex_number}) => (
+  const teamMemberSegment = ({name, pokedex_number, classfication}) => (
   
     //if you iterate in react, each component needs a unique key
     <Segment key={pokedex_number}>
@@ -60,20 +64,34 @@ function App() {
           <Segment basic>
           {
             R.map(
-              ({name, pokedex_number, type1, type2}) => (
+              ({name, pokedex_number, classfication, type1, type2}) => (
                 <Segment key={pokedex_number} basic>
                   <Segment attached>
-                    <Header content={`${pokedex_number} ${name}`} />
+                    <Header >
+                      <Image circular src={require(`./sprites/${pokedex_number}.png`)}/>
+                      {`${name}`}
+                      <Divider horizontal hidden />
+                      <Header.Subheader>
+                        <Label.Group>
+                          <Label content='No.' detail={pokedex_number} />
+                          <Label content='Type 1:' detail={type1} />
+                          {
+                            //if truthy value then it will render the Label content
+                            type2 && <Label content='Type 2' detail={type2} />
+                          }
+                        </Label.Group>
+                      </Header.Subheader>
+                    </Header>
                   </Segment>
                   <Button.Group attached="bottom">
                   const infoModal = () => (
                     <Modal trigger = {<Button>Info</Button>}>
                       <Modal.Header>{name}</Modal.Header>
                       <Modal.Content image>
-                        {/* To access the images dynamically, have a property that you pass in that's the same as this */}
+                        {/* To access the images dynamically, have a property that you pass in that's the same as the name */}
                         <Image width="70" height="70" src={require(`./sprites/${pokedex_number}.png`)}/>
                         <Modal.Description>
-                          <p> The seed type pokemon </p>
+                          <p>{`The ${classfication}`}</p>
                         </Modal.Description>
                       </Modal.Content>
                     </Modal>
