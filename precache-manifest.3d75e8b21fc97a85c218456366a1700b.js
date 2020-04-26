@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dd9f1493d4e7df46d3db51fcde7e2d02",
+    "revision": "24482cdd71aa2ee3e32af2e1d2b91c64",
     "url": "/pokedexAfterRUHacks/index.html"
   },
   {
-    "revision": "47854c73b87e8d6800ae",
+    "revision": "7b73edf2f94645dbf56a",
     "url": "/pokedexAfterRUHacks/static/css/main.b6946562.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/pokedexAfterRUHacks/static/js/2.09cae4a2.chunk.js"
   },
   {
-    "revision": "47854c73b87e8d6800ae",
-    "url": "/pokedexAfterRUHacks/static/js/main.7846549f.chunk.js"
+    "revision": "7b73edf2f94645dbf56a",
+    "url": "/pokedexAfterRUHacks/static/js/main.1ef26340.chunk.js"
   },
   {
     "revision": "640a9794274d117fdbf3",
