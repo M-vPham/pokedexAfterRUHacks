@@ -38,13 +38,12 @@ function App() {
   const teamMemberSegment = ({name, pokedex_number, classfication}) => (
   
     //if you iterate in react, each component needs a unique key
-    <Segment key={pokedex_number}>
+    <Segment key={pokedex_number} className='segment'>
       {name}
       <Button floated='right' size="small" labelPosition='right'
         onClick={
         (event, data) => {
           let index = R.indexOf(pokedex_number, team)
-          console.log(index)
           // only possible because setTeam is in scope already
           // otherwise would need to pass as component prop
           setTeam(R.remove(index, 1, team))
@@ -61,10 +60,10 @@ function App() {
       <Ref innerRef={contextRef}>
       <Grid.Row>
         <Grid.Column width={10}>
-          <Segment basic>
+          <Segment basic className='segment'>
           {
             R.map(
-              ({name, pokedex_number, classfication, type1, type2}) => (
+              ({name, pokedex_number, classfication, type1, type2, entry}) => (
                 <Segment key={pokedex_number} basic>
                   <Segment attached>
                     <Header >
@@ -85,13 +84,14 @@ function App() {
                   </Segment>
                   <Button.Group attached="bottom">
                   const infoModal = () => (
-                    <Modal trigger = {<Button>Info</Button>}>
+                    <Modal trigger = {<Button>Info</Button>} >
                       <Modal.Header>{name}</Modal.Header>
-                      <Modal.Content image>
+                      <Modal.Content image >
                         {/* To access the images dynamically, have a property that you pass in that's the same as the name */}
                         <Image width="70" height="70" src={require(`./sprites/${pokedex_number}.png`)}/>
                         <Modal.Description>
                           <p>{`The ${classfication}`}</p>
+                          <p>{`${entry}`}</p>
                         </Modal.Description>
                       </Modal.Content>
                     </Modal>
